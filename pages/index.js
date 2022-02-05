@@ -2,25 +2,36 @@ import {useState} from "react"
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+import Html from "components/Html"
 import Layout from "components/Layout"
 import Card from "components/Card";
 
-export default function Home() {
-  return (
-    <Layout title="Welcome to Thaumazo">
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Move forward
-        </h1>
-        
-        <p className={styles.description}>
-          Use our brains to solve your oorganizations challenges
-        </p>
+import loadMD from "lib/loadMD"
 
-        <Card />
+
+export default function Home({ main }) {
+  return (
+    <Layout title={ main.title }>
+      <main className={styles.main}>
+        <Html html={main.html} />
+        {/* <Card /> */}
       </main>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+
+  
+  const main = await loadMD("content/home/main")
+  
+  console.log(main);
+  return {
+    props: {
+      main
+    }
+  }
+
 }
 
 /*
