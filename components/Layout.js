@@ -43,7 +43,7 @@ export default function Layout({ children, title, name, description }) {
             </IconButton>
           */}
             <Link key="siteName" href="/" passHref>
-              <Button color="inherit" className={ styles.siteName }>Thaumazo</Button>
+              <Button color="inherit" classes={{ root: styles.siteName }}>Thaumazo</Button>
             </Link>
             <ButtonGroup key="primary-nav" variant="text" sx={{ flexGrow: 1 }}>
               {pages.map(([path, title]) => {
@@ -51,7 +51,7 @@ export default function Layout({ children, title, name, description }) {
                   <Link key={ path }href={ path } passHref>
                     <Button
                       color="inherit"
-                      className={ name == path ? styles.active : null}
+                      classes={{ root: name == path ? styles.active : null }}
                     >{ title }</Button>
                   </Link>
                 )
