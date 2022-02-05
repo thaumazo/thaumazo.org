@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
+
 import theme from "styles/theme"
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, styled } from '@mui/material/styles';
 
 import Head from 'next/head'
 import Link from "next/link"
@@ -18,6 +19,12 @@ const pages = [
  // ['/about', 'About'],
  // ['/contact', 'Contact'],
 ]
+
+const ButtonLarge = styled(Button)(({ theme }) => ({
+  color: "#eee",
+  marginRight: 20,
+  fontSize: 20,
+}));
 
 export default function Layout({ children, title, name, description }) {
   return (
@@ -43,7 +50,7 @@ export default function Layout({ children, title, name, description }) {
             </IconButton>
           */}
             <Link key="siteName" href="/" passHref>
-              <Button color="inherit" classes={{ root: styles.siteName }}>Thaumazo</Button>
+              <ButtonLarge color="inherit" classes={{ root: styles.siteName }}>Thaumazo</ButtonLarge>
             </Link>
             <ButtonGroup key="primary-nav" variant="text" sx={{ flexGrow: 1 }}>
               {pages.map(([path, title]) => {
@@ -51,7 +58,7 @@ export default function Layout({ children, title, name, description }) {
                   <Link key={ path }href={ path } passHref>
                     <Button
                       color="inherit"
-                      classes={{ root: name == path ? styles.active : null }}
+                      sx={{ color: name == path ? "#222" : null }}
                     >{ title }</Button>
                   </Link>
                 )
