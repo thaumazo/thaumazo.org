@@ -25,7 +25,6 @@ export async function getStaticProps() {
   
   const main = await loadMD("content/home/main")
   
-  console.log(main);
   return {
     props: {
       main
